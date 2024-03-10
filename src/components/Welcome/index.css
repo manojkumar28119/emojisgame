@@ -1,0 +1,45 @@
+/* Write your CSS here */
+.welcome-page {
+  font-family: 'Roboto';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.details-card {
+  border: 2.5px solid #000000;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 576px) {
+  .details-card {
+    width: 98vw;
+  }
+}
+.heading {
+  font-family: 500;
+  font-size: 25px;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.input {
+  border: 2px solid #000000;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+.btn {
+  background-color: #387adf;
+  border: none;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 6px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
