@@ -13,6 +13,10 @@ class Welcome extends Component {
   onClickPlayBtn = () => {
     const {name} = this.state
     localStorage.setItem('userName', name)
+
+    const {history} = this.props
+
+    history.replace('/play-game')
   }
 
   render() {
