@@ -14,7 +14,7 @@ const celebrationEmojis = [
   '🎆', // Fireworks
   '🎇', // Sparkler
   '🎂', // Birthday Cake
-  '🥂', // Clinking Glasses
+  '🥂',
 ]
 
 let i = 1
