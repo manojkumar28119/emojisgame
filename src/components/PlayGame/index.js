@@ -1,6 +1,8 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import './index.css'
 import EmojiItem from '../EmojiItem'
+import Success from '../Success'
 
 const arr = []
 
@@ -92,12 +94,13 @@ class PlayGame extends Component {
   render() {
     const {emojisArr, score, activeEmojiId, time, intervalId} = this.state
     const name = localStorage.getItem('userName')
-    const {history} = this.props
+    console.log(name)
+    if (name === null) {
+      return <Redirect to="/" />
+    }
     const isGameOver = emojisArr.every(each => each.isActive === false)
-    console.log(this.props)
     if (isGameOver === true) {
       clearInterval(intervalId)
-      history.replace('/success')
     }
 
     let modifiedTime
@@ -120,7 +123,7 @@ class PlayGame extends Component {
       modifiedTime = `00:0${time}`
     }
 
-    return (
+    return isGameOver === false ? (
       <div className="play-game-page">
         <div className="play-game-main-card">
           <h1 className="main-heading">Mahajong Game</h1>
@@ -145,6 +148,8 @@ class PlayGame extends Component {
           </div>
         </div>
       </div>
+    ) : (
+      <Success time={modifiedTime} score={score} />
     )
   }
 }
