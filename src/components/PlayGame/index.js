@@ -41,7 +41,6 @@ class PlayGame extends Component {
     activeEmojiId: '',
     score: 0,
     time: 0,
-    isGameOver: false,
   }
 
   componentDidMount() {
@@ -50,13 +49,6 @@ class PlayGame extends Component {
     }, 1000)
 
     this.setState({intervalId})
-  }
-
-  componentWillUnmount() {
-    const {isGameOver, intervalId} = this.state
-    if (isGameOver === true) {
-      clearInterval(intervalId)
-    }
   }
 
   onClickEmojiRevealBtn = id => {
@@ -94,13 +86,13 @@ class PlayGame extends Component {
   render() {
     const {emojisArr, score, activeEmojiId, time, intervalId} = this.state
     const name = localStorage.getItem('userName')
-    console.log(name)
     if (name === null) {
       return <Redirect to="/" />
     }
     const isGameOver = emojisArr.every(each => each.isActive === false)
     if (isGameOver === true) {
       clearInterval(intervalId)
+      localStorage.removeItem('userName')
     }
 
     let modifiedTime
